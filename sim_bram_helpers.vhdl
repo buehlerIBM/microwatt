@@ -16,6 +16,7 @@ package body sim_bram_helpers is
     function behavioural_initialize (filename: String; size: integer) return integer is
     begin
         assert false report "VHPI" severity failure;
+        return 0; -- need to return something
     end behavioural_initialize;
 
     procedure behavioural_read (val: out std_ulogic_vector(63 downto 0); addr: std_ulogic_vector(63 downto 0); length: integer; identifier: integer) is

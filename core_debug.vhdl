@@ -96,7 +96,8 @@ begin
 	    do_reset <= '0';
 	    do_icreset <= '0';
 
-	    if (rst) then
+            -- MB: The "Vhdl 2008 Condition Operator" is not supported yet for simulation
+	    if (rst='1') then
 		stopping <= '0';
 		terminated <= '0';
 	    else
@@ -128,7 +129,8 @@ begin
 			    end if;
 			end if;
 		    else
-			report("DMI read from " & to_string(dmi_addr));
+                        -- MB: The "Vhdl 2008 to_string Operator" is not supported yet for simulation. Use to_hstring instead
+			report("DMI read from " & to_hstring(dmi_addr));
 		    end if;
 		end if;
 

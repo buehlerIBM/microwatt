@@ -80,11 +80,13 @@ begin
 	end function decode_autoinc;
     begin
 	if rising_edge(clk) then
-	    if (rst) then
+            -- MB: The "Vhdl 2008 Condition Operator" is not supported yet for simulation.
+	    if (rst='1') then
 		reg_addr <= (others => '0');
 		reg_ctrl <= (others => '0');
 	    else 	    -- Standard register writes
-		if dmi_req and dmi_wr then
+                -- MB: The "Vhdl 2008 Condition Operator" is not supported yet for simulation.
+		if (dmi_req and dmi_wr) = '1' then
 		    if dmi_addr = DBG_WB_ADDR then
 			reg_addr <= dmi_din;
 		    elsif dmi_addr = DBG_WB_CTRL then
@@ -142,7 +144,8 @@ begin
     wb_trigger : process(clk)
     begin
 	if rising_edge(clk) then
-	    if (rst) then
+            -- MB: The "Vhdl 2008 Condition Operator" is not supported yet for simulation.
+	    if (rst='1') then
 		state <= IDLE;
 		wb_out.stb <= '0';
 	    else
@@ -156,7 +159,8 @@ begin
 		    if wb_in.stall = '0' then
 			wb_out.stb <= '0';
 		    end if;
-		    if wb_in.ack then
+                    -- MB: The "Vhdl 2008 Condition Operator" is not supported yet for simulation.
+		    if wb_in.ack='1' then
 			-- We shouldn't get the ack if we hadn't already cleared
 			-- stb above but if this happen, don't leave it dangling.
 			--

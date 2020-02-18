@@ -38,8 +38,16 @@ begin
 	wb_slave_out <= wb_masters_in(early_sel);
 	for i in 0 to NUM_MASTERS-1 loop
 	    wb_masters_out(i).dat <= wb_slave_in.dat;
-	    wb_masters_out(i).ack <= wb_slave_in.ack when early_sel = i else '0';
-	    wb_masters_out(i).stall <= wb_slave_in.stall when early_sel = i else '1';
+            -- MB: the "Vhdl 2008 Sequential Conditional Signal Assignment" is not supported yet for simulation.
+	    -- wb_masters_out(i).ack <= wb_slave_in.ack when early_sel = i else '0';
+	    -- wb_masters_out(i).stall <= wb_slave_in.stall when early_sel = i else '1';
+            if early_sel = i then
+              wb_masters_out(i).ack <= wb_slave_in.ack;
+              wb_masters_out(i).stall <= wb_slave_in.stall;
+            else
+              wb_masters_out(i).ack <= '0';
+              wb_masters_out(i).stall <= '1';
+            end if;   
 	end loop;
     end process;
 

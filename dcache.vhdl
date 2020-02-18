@@ -508,7 +508,8 @@ begin
 	    -- If it's a load, enable register writeback and switch
 	    -- mux accordingly
 	    --
-	    if r1.req.load then	    
+            -- MB: The "Vhdl 2008 Condition Operator" is not supported yet for simulation
+	    if r1.req.load ='1' then	    
 		d_out.write_reg <= r1.req.write_reg;
 		d_out.write_enable <= '1';
 
