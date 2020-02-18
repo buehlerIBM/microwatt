@@ -43,8 +43,8 @@ begin
 	    rst        => rst,
 	    system_clk => system_clk,
 	    uart0_rxd  => uart0_rxd,
-	    uart0_txd  => uart0_txd,
-	    debug      => led_out
+	    uart0_txd  => uart0_txd
+	    -- debug      => led_out
 	    );
 
 end;

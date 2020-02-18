@@ -14,10 +14,10 @@ use work.wishbone_types.all;
 -- 0xc0002000: UART0 (for host communication)
 entity soc is
     generic (
-	MEMORY_SIZE   : positive := 524288;
-	RAM_INIT_FILE : string := "/tmp/hello_world.hex";
-	RESET_LOW     : boolean := false;
-	SIM           : boolean := false;
+	MEMORY_SIZE   : positive; 
+	RAM_INIT_FILE : string; 
+	RESET_LOW     : boolean;
+	SIM           : boolean;
 	DISABLE_FLATTEN_CORE : boolean := false
 	);
     port(
