@@ -382,21 +382,6 @@ begin
 	    v.slow_op_oe := e_in.oe;
 	    v.slow_op_xerc := v.e.xerc;
 
-            case_1: case e_in.insn_type is
-	    when OP_ILLEGAL =>
-		terminate_out <= '1';
-		report "illegal";
-	    when OP_NOP =>
-		-- Do nothing
-	    when OP_AND | OP_OR | OP_XOR =>
-		result := logical_result;
-		result_en := '1';
-            when others =>
-		terminate_out <= '1';
-		report "illegal";
-	    end case;
-
-
 	    case_0: case e_in.insn_type is
 
 	    when OP_ILLEGAL =>
