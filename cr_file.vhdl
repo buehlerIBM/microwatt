@@ -28,8 +28,8 @@ architecture behaviour of cr_file is
     signal xerc : xer_common_t := xerc_init;
     signal xerc_updated : xer_common_t;
 begin
-    cr_create_0: process(all)
-        variable hi, lo : integer := 0;
+    cr_create_0: process(crs, w_in,xerc)
+      variable hi, lo : integer := 0;
         variable cr_tmp : std_ulogic_vector(31 downto 0) := (others => '0');
     begin
         cr_tmp := crs;
