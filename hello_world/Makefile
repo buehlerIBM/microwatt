@@ -13,16 +13,16 @@ CFLAGS = -Os -g -Wall -std=c99 -msoft-float -mno-string -mno-multiple -mno-vsx -
 ASFLAGS = $(CFLAGS)
 LDFLAGS = -T powerpc.lds
 
-all: hello_world.hex
+all: $(FNAME).hex
 
-hello_world.elf: hello_world.o head.o
-	$(LD) $(LDFLAGS) -o hello_world.elf hello_world.o head.o
+$(FNAME).elf: $(FNAME).o head.o
+	$(LD) $(LDFLAGS) -o $(FNAME).elf $(FNAME).o head.o
 
-hello_world.bin: hello_world.elf
-	$(OBJCOPY) -O binary hello_world.elf hello_world.bin
+$(FNAME).bin: $(FNAME).elf
+	$(OBJCOPY) -O binary $(FNAME).elf $(FNAME).bin
 
-hello_world.hex: hello_world.bin
-	../scripts/bin2hex.py hello_world.bin > hello_world.hex
+$(FNAME).hex: $(FNAME).bin
+	../scripts/bin2hex.py $(FNAME).bin > $(FNAME).hex
 
 clean:
-	@rm -f *.o hello_world.elf hello_world.bin hello_world.hex
+	@rm -f *.o $(FNAME).elf $(FNAME).bin $(FNAME).hex

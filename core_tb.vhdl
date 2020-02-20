@@ -20,7 +20,7 @@ begin
 	generic map(
 	    SIM => true,
 	    MEMORY_SIZE => (384*1024),
-	    RAM_INIT_FILE => "/afs/bb/u/buehler/quantum/volumes/q1/mw_prj/src/microwatt/hello_world.hex", -- "main_ram.bin",
+	    RAM_INIT_FILE => "/afs/bb/u/buehler/quantum/volumes/q1/mw_prj/src/microwatt/hello_world/hello_reiner.hex", -- "main_ram.bin",
 	    RESET_LOW => false
 	    )
 	port map(
